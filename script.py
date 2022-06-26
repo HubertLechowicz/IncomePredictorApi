@@ -17,6 +17,8 @@ def index():
 
 #prediction function
 def ValuePredictor(to_predict_list):
+    if(len(to_predict_list)!= 12):
+        return -1
     to_predict = np.array(to_predict_list).reshape(1,12)
     loaded_model = pickle.load(open("model.pkl", "rb"))
     result = loaded_model.predict(to_predict)
@@ -39,4 +41,8 @@ def result():
         return render_template("result.html",prediction=prediction)
 
 if __name__ == "__main__":
-	app.run(debug=True)
+# 	app.run(debug=True)
+    # list_for_testing_ValuePredictor_0 = ['50', 2, 14, 0, 4, 0, 2, 1, '2174', '0', '40', 38]
+    list_for_testing_ValuePredictor_0 = ['50', 2, 14, 0, 4, 0, 2, 1, '2174', '0', '40', 38]
+    print(ValuePredictor(list_for_testing_ValuePredictor_0));
+    
